@@ -1,0 +1,26 @@
+命名空间.类
+System.Consloe.WriteLine("");
+
+using System;
+Console.WriteLine("~");
+
+static void Main()  //程序的入口，一个C#程序中只能有一个Main方法，且必须在一个类中
+
+标识符：字母或下划线+字母数字下划线
+关键字前加@也可以作为标识符
+
+//单行住址
+/*多行
+注释*/
+
+using System;  //命名空间
+namespace hello_world
+{
+    class Program   //类
+    {
+        static void Main(string[] args)   //Main方法
+        {
+            Console.WriteLine("hello money, hello man, hello world!~!~!~!~!~!~");
+        }
+    }
+}
