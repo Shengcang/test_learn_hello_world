@@ -1,0 +1,43 @@
+//输出部分——————————————————————————————
+/*格式化输出    "{N[,M][:格式]}"
+N表示输出变量的序号；=0时输出第一个变量的值，=5时输出第6个变量的值，以此类推
+,M可选项，表示输出所占字符个数，负数左对齐，正数右对齐；
+:格式可选项，c为货币形式，d为整数，e为科学计数法，f浮点，g通用格式，n自然数格式，x十六进制格式；
+默认保留两位小数*/
+
+//writeline会输出一个新行，write不会输出新行
+
+//输入部分————————————————————————————————————————
+//ReadLine读取一行，敲回车停止，但不接受回车
+//Read读输入有效字符的第一个，返回的是代表他的整数
+
+using System;
+
+namespace hello_world
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double k = 3.1415926;
+            double i = 123.456;
+            double j = 789.123456;
+            Console.WriteLine("输出部分");
+            Console.WriteLine("{0,8:c5}", k);
+            Console.WriteLine("{0,10:c6}", k);
+            Console.WriteLine("{0,8:c4}", k);
+            Console.Write("i={0,8:f},j={1,8:f3}",j,i);
+            Console.WriteLine("i={0,-8:f},j={1,8:f3}", i, j);
+
+            //输入
+            Console.WriteLine("输入部分");
+             Console.WriteLine("readline的输入：");
+            string a=Console.ReadLine();
+            Console.WriteLine("readline的输出：{0}", a);
+            Console.WriteLine("read的输入：");
+            int b = Console.Read();
+            Console.WriteLine("read的输出：{0}", b);
+
+        }
+    }
+}
