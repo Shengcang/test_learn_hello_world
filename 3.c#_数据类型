@@ -1,0 +1,39 @@
+//整数、浮点、小数、字符char
+
+//object类：可被赋予任何类型的值
+object obj1=2;
+objcet obj2='x';
+
+//string类
+string str1="xixi";
+string str2="haha";
+string str3=str1+str2;
+Console.WriteLine(str3[0]);
+
+//常规字符串常数：双引号内的字符串
+Console.WriteLine("123\n456");
+输出结果：
+123
+456
+
+//逐字字符串常数：输入内容的完全复现，只有"需要用""来表示
+Console.WriteLine(@"123\n
+456""");
+输出结果：
+123\n
+456"
+
+//隐式转换
+int a=8;
+long b=a;
+
+//显示转换
+(int)3.14
+
+//装箱：把数据隐式转换成object类
+int a=8;
+object obj=a;
+
+//拆箱：把数据显示转换成对应的，必须兼容
+object obj=456;
+int k=(int)obj;
