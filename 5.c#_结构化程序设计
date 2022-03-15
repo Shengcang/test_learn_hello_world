@@ -1,0 +1,61 @@
+//if结构————————————————————————————
+static void Main(string[] args)
+        {
+            Console.WriteLine("请输入一个分数");
+            string a = Console.ReadLine();                      //ReadLine只是字符串类型
+            double b = double.Parse(a);                         //用double.Parse()把字符串转换成double，或者也可以直接写double b=double.Parse(Console.ReadLine());
+            if (b >= 90)
+                Console.WriteLine("{0}的成绩为优秀", b);
+            else if(b>=60)
+                Console.WriteLine("{0}的成绩为及格",b);
+            else
+                Console.WriteLine("{0}的成绩为不及格",b);
+            
+        }
+
+//switch语句——————————————————————
+static void Main(string[] args)
+        {
+            Console.WriteLine("请输入字母：");
+            char x = (char)Console.Read();                      //用显示转换把Console.Read变成字符
+            switch (x)
+            {
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                    Console.WriteLine("字母{0}为元音");
+                    break;
+                default:
+                    Console.WriteLine("字母{0}为辅音");
+                    break;
+            }
+        }
+        
+//while语句————————————————————
+int i = 1, sum = 0;
+while (i <= 10)                                                //while循环体内遇到break会退出循环
+   sum += i++;
+Console.WriteLine("1+2+...+10的和为{0}", sum);
+
+//do while语句——————————————————————
+int i = 2, sum = 0;
+do
+{
+  sum += i;
+  i += 2;
+} while (i <= 100);
+Console.WriteLine("100以内偶数的和为{0}", sum);
+
+//for语句————————————————————————
+int sum = 0;
+            for(int i=1;i<=10;i++)
+            {
+                int sub_sum = 1;
+                for (int j = 1; j <= i; j++)
+                    sub_sum *= j;
+                sum += sub_sum;
+            }
+            Console.WriteLine("10以内整数阶乘和为{0}", sum);
+
