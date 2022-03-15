@@ -1,0 +1,51 @@
+//一维数组定义——————————————————————
+int[] arr1;
+char[] arr2;
+string[] arr3;
+
+//动态初始化——————————————————————————
+int[] arr1=new int[5]{1,2,3,4,5};
+char[] arr2=new char[5];               //方括号内填数组长度，当花括号内枚举出所有元素，方括号内可不填
+
+//静态初始化————————————————————————
+string[] arr3={"haha","hehe"};         //静态初始化必须和定义结合在一起
+
+//数组从小到大排序——————————————————
+            int mid=0;
+            int smallestnum=0;
+            int smallest;
+            int[] arr = new int[] { 5, 2, 8, 36, 12, 24, 99, 1, 105, 66 };
+            for (int i = 0; i <= 9; i++)
+            {
+                smallest = arr[i];                        //这两行容易错，容易忘记~~~~~~~~~
+                smallestnum = i;
+                for (int j = i+1; j <= 9; j++)
+                {
+                    if (arr[j] < smallest)
+                    {
+                        smallestnum = j;
+                        smallest = arr[j];
+                    }
+                }
+                mid=arr[i];
+                arr[i]=arr[smallestnum];
+                arr[smallestnum] = mid;
+            }
+            foreach (int k in arr)
+                Console.Write("{0},", k);
+
+//字符串反序输出1.利用数组————————————————
+            Console.WriteLine("输入字符串：");
+            string str = Console.ReadLine();
+            char[] arr = new char[str.Length];          //用str.Length获得字符串的长度
+            for (int i = 0; i < str.Length; i++)
+                arr[i] = str[i];
+            Console.WriteLine("字符串的反序是：");
+            for (int j = str.Length - 1; j >= 0; j--)
+                Console.Write("{0},", arr[j]);
+//字符串反序输出2，不用数组————————————————————
+            Console.WriteLine("输入字符串：");
+            string str = Console.ReadLine();
+            Console.WriteLine("字符串的反序是：");
+            for(int i=str.Length-1;i>=0;i--)
+                Console.Write("{0},", str[i]);
