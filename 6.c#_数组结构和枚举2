@@ -1,0 +1,99 @@
+//结构————————————————————————————
+using System;
+
+namespace shuzu_jiegou_meiju
+{
+    struct student                              //用struct定义结构，如果成员名前有static，则为静态成员，否则为实例成员，静态成员通过结构名访问，实例成员通过创建结构类型的变量访问
+    {
+        public string name;                     //结构成员前通常加public，表示该成员为公有成员，可以被外界访问
+        public int age;
+        public static string department="computer";    //定义的静态成员department
+        public int number;
+        public int testnumber()                 //一个类似函数的东西吧。现在还没学到
+        { return (number * 2 - 1000); }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            student studexap;                   //创建结构类型
+            studexap.name = "张三";
+            studexap.number = 18251011;
+            studexap.age = 22;
+            Console.WriteLine("学生基本信息：");
+            Console.WriteLine("姓名：{0},年龄：{1}，学号：{2}，学院：{3}", studexap.name, studexap.age, studexap.number,student.department);  //用结构名student访问department
+            Console.WriteLine("准考证号为：{0}", studexap.testnumber());          //调用上面的函数东西
+         }
+    }
+}
+
+//查找——————————————————————
+using System;
+
+namespace shuzu_jiegou_meiju
+{
+    public struct student
+    {
+        public string num;
+        public string name;
+        public int score;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            student[] stud = new student[3];
+            int i;
+            for ( i = 0; i < 3; i++)
+            {
+                string x = i.ToString();          //用i.ToString()把int转化为字符串
+                stud[i].name = "王" + x;
+                stud[i].num = "1825100" + x;
+                stud[i].score = 90 + i;
+            }
+            foreach (student k in stud)
+                Console.WriteLine("姓名：{0},学号：{1},分数：{2}", k.name, k.num, k.score);
+            Console.WriteLine("输入要查找的学号：");
+            string findnum = Console.ReadLine();
+            int targscore=0;
+            for(i=0;i<stud.Length;i++)
+                if(stud[i].num==findnum)
+                { targscore = stud[i].score;
+                    break;
+                }
+            if (i == stud.Length)
+                Console.WriteLine("查找学号不存在");
+            else
+                Console.WriteLine("学号：{0}，成绩为{1}", findnum, targscore);
+        }         
+    }
+}
+
+//枚举————————————————————————
+using System;
+
+namespace shuzu_meiju
+{
+    class Program
+    {
+        enum color                                                             //要在main前声明
+        { yellow, white = 50, blue, purple = 5, green = purple，red=666}      //赋值规则
+        static color col1, col2, col3, col4, col5;                           //在main前生命静态变量
+        static void Main(string[] args)
+        {
+            int x = (int)color.red;                              //用枚举名.枚举成员访问
+            col1 = color.yellow; 
+            col2 = color.white;
+            col3 = color.blue;
+            col4 = color.purple;
+            col5 = color.green;
+            Console.WriteLine("red={0}", x);                      //用枚举名.枚举成员访问
+            Console.WriteLine("yellow={0}", col1);                //yellow，赋给变量的是枚举成员的标识符字符串，而不是常量值
+            Console.WriteLine("yellow={0}", (int)col1);           //0  只有在显示转换后才会显示常量值
+            Console.WriteLine("white={0}", (int)col2);            //50
+            Console.WriteLine("blue={0}", (int)col3);             //51
+            Console.WriteLine("purple={0}", (int)col4);           //5
+            Console.WriteLine("green={0}", (int)col5);            //5
+        }
+    }
+}
