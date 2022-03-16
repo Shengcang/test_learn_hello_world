@@ -49,3 +49,7 @@ string[] arr3={"haha","hehe"};         //静态初始化必须和定义结合在
             Console.WriteLine("字符串的反序是：");
             for(int i=str.Length-1;i>=0;i--)
                 Console.Write("{0},", str[i]);
+
+//二维数组定义和动静态初始化——————————————————————————————————
+int[,] arr2=new int[3,2];     //分别代表行数和列数
+int[,] arr3=new int[,]{{1,1},{2,5},{3,8}};
