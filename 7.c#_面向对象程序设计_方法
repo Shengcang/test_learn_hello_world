@@ -1,0 +1,45 @@
+/*修饰符 返回值类型 方法名（形参列表）      如果省略修饰符，默认private
+{方法体语句；} */           //碰到结束花括号返回，或者碰到return返回（void或者有返回值）
+using System;
+
+namespace mian_xiang_dui_xiang_lei
+{
+    public class fine
+    {
+        public void swap(int x, int y)                //值参数，不会影响原来的参数，产生新的存储空间
+        {
+            int k;
+            k = x;
+            x = y;
+            y = k;
+        }
+        public void refswap(ref int x, ref int y)     //引用参数，原来的参数也会受影响.不产生新的存储空间
+        {
+            int k;
+            k = x;
+            x = y;
+            y = k;
+        }
+        public string testout(out string m)            //输出参数，原来的参数会受影响，不产生新存储空间，但out参数传入之前不用赋值，方法体内必须赋值，
+        {                                              //调用时传过来的必须是变量，类型必须相同，并且必须使用out修饰。
+            m = "what out";                            //希望返回多个值时使用
+            return "already out";
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+                int x = 1, y = 2;
+                fine myfine = new fine();
+                myfine.swap(x, y);
+                Console.WriteLine("x={0},y={1}", x, y);   //1，2
+                myfine.refswap(ref x, ref y);
+                Console.WriteLine("x={0},y={1}", x, y);   //2，1
+                string p;
+                Console.WriteLine(myfine.testout(out p));   //返回的是方法体内return的部分，already out
+                Console.WriteLine(p);                       //返回的是p已经经过方法体修改后的值，what out
+        }
+    }
+}
