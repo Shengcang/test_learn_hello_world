@@ -1,0 +1,59 @@
+//构造函数，在创建对象的时候自动执行，名字必须和类的相同，可以带参数但没返回值，可以被重载，但不能被继承
+using System;
+
+namespace mian_xiang_dui_xiang_lei
+{
+    public class people            //构造函数的修饰符一般为public，也可以用别的，比如用private，就表示创建对象的时候必须加参数，否则报错(具有一定的保护级别)
+    {
+        public int tall,weight;    //加public，下面才能访问
+        public people()            //不带参数的构造函数
+        { this.tall = 155; }       //this表示创建的对象自身
+        public people(int x)       //带参数的构造函数
+        { tall = x; }              //不过好像这里用不用this不影响的样子
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            people person1 = new people();
+            Console.WriteLine("不带参数的person的身高为{0}", person1.tall);
+            people person2 = new people(180);
+            Console.WriteLine("带参数的person的身高为{0}", person2.tall);
+        }
+    }
+}
+
+//析构函数，撤销对象时自动执行，名字必须和类名相同但前面加~，不能带参数也没返回值，不能被继承也不能被重载
+using System;
+
+namespace mian_xiang_dui_xiang_lei
+{
+    public class people
+    {
+        public int tall,weight;
+        private people()
+        { this.weight = 1; }
+        
+        public people(int x,int y)
+        { weight = x+y; }
+        ~people()                                               //不知道为什么，这个程序执行完以后没有出现这行字
+        { Console.WriteLine("析构函数小可爱被召唤出来了"); }
+        
+        public static people creatperson()                //定义了一个函数，创造人
+            { 
+            people person = new people();            //调用了不带参数的private
+            return person;
+        }
+        
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            people person1 = people.creatperson();
+            Console.WriteLine("不带参数的person的体重为"+person1.weight);    //1
+            people person2 = new people(20,30);
+            Console.WriteLine("带参数的person的体重为"+ person2.weight);     //50
+        }
+    }
+}
