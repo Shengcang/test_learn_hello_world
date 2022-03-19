@@ -43,3 +43,90 @@ namespace mian_xiang_dui_xiang_lei
         }
     }
 }
+
+//方法重载——————————————————————类里面的两个及以上的方法名字相同，只要使用的参数类型或者个数不同，还是能分别使用
+//静态方法，前面加static，归类所有；非静态方法，没有static，归该类定义的对象所有
+//类里面的非静态方法可以直接访问静态和非静态成员，静态方法只能访问静态成员？？？
+
+//运算符重载————————————————————所有重载运算符的名称都是operator加运算符，且重载运算符的方法都是共有且静态的
+//比较运算符重载必须成对出现，如==和！=，<=和>=。true和false也必须成对出现
+//一元运算符重载，必须使用类T的单个参数，+ - !可以返回任何类型，++ --必须返回类T，且重载后无法区分前缀和后缀，true和false要求返回的必须是布尔类型
+using System;
+
+namespace mian_xiang_dui_xiang_lei
+{
+    public class testbool
+    {
+        public int x;
+        public static bool operator true(testbool a)      //方法是public static ，返回值是bool，参数是类testbool的对象a
+        { return a.x == 0; }
+        public static bool operator false(testbool a)     //true和false成对重载
+        { return a.x != 0; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            testbool b = new testbool();
+            b.x = 5;                                //让b.x=5
+            if (b)                                  //调用了重载后的bool值，返回的是if(b.x!=0)所以是false
+            { Console.WriteLine("b is ok"); }
+            else
+                Console.WriteLine("b is bad");
+        }
+    }
+}
+//二元运算符重载，必须有两个参数，且其中至少有一个必须是声明运算符的类型，一个二元运算符可以返回任何类型
+using System;
+
+namespace mian_xiang_dui_xiang_lei
+{
+    public class testadd
+    {
+        public int x, y, z;
+        public static testadd operator +(testadd a,testadd b)
+        { testadd d = new testadd();
+            d.x = a.x + b.x;
+            d.y = a.y + b.y;
+            d.z = a.z + b.z;
+            return d;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            testadd a = new testadd();
+            a.x = 1;a.y = 2;a.z = 3;
+            testadd b = new testadd();
+            b.x = 4;b.y = 5;b.z = 6;
+            testadd c = new testadd();
+            c = a + b;
+            Console.WriteLine("c的坐标为{0},{1},{2}", c.x, c.y, c.z);   //5，7，9
+        }
+    }
+}
+
+//递归——————————————————————
+using System;
+
+namespace mian_xiang_dui_xiang_lei
+{
+    public class fibonaci
+    {
+        public static int add(int n)
+        { if (n == 1 || n == 2)
+                return 1;
+            else
+                return add(n - 1) + add(n - 2);
+        }
+        
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+        Console.WriteLine(fibonaci.add(10));
+        }
+    }
+}
